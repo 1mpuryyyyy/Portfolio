@@ -22,19 +22,29 @@ def services():
     return render_template('services.html')
 
 
-@app.route('/reg', meyhods=['GET', 'POST'])
+@app.route('/reg', methods=['GET', 'POST'])
 def reg():
-    R = Reg_form()
+    r = Reg_form()
     if request.method == 'POST':
-        name, surname, email, password = R.name.data, R.surname.data, R.email.data, R.password.data
+        name, surname, email, password = r.name.data, r.surname.data, r.email.data, r.password.data
         if name and surname and email and password:
-            d.crate_recorts(name, surname, email, password)
-    return render_template('reg.html', title='Регистрация', form=R)
+            d.crate_recorts_reg(name, surname, email, password)
+    return render_template('reg.html', title='Регистрация пользователя', form=r)
 
 
-@app.route('log')
+@app.route('/log', methods=['GET', 'POST'])
 def log():
-    return render_template('log.html')
+    h = Login_form()
+    if request.method == 'POST':
+        email, password = h.email.data, h.password.data
+        if email and password:
+            d.creating_tables_log(email, password)
+    return render_template('log.html', title='Вход', form=h)
+
+
+@app.route('/examples')
+def examples():
+    return render_template('examples.html')
 
 
 if __name__ == '__main__':
