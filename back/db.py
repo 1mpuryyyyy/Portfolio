@@ -25,8 +25,10 @@ class Database:
         password VARCHAR(32) NOT NULL 
         );""")
         self.con(""" CREATE TABLE IF NOT EXISTS peoples_data_log (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         email VARCHAR(32) NOT NULL,
-        password VARCHAR(32) NOT NULL""")
+        password VARCHAR(32) NOT NULL
+        );""")
 
     def crate_recorts_reg(self, name: str, surnmae: str, email: str, password: str):
         f = self.con('SELECT id+1 FROM peoples_data_reg ORDER BY id DESK LIMIT 1;', fetchall=True)
@@ -43,7 +45,8 @@ class Database:
         if n == 1:
             values = self.con('SELECT * FORM peoples_data_reg WHERE id=?', params=(id,), off=True, fetchall=False)
         else:
-            values = self.con('SELECT * FROM peoples_data_log WHERE id=?', params=(id,), off=True, fetchall==False)
+            values = self.con('SELECT * FROM peoples_data_log WHERE id=?', params=(id,), off=True, fetchall=False)
         return values
 
 # s = Database('database.db')
+# s.creating_tables()
