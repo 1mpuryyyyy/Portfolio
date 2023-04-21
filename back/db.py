@@ -37,5 +37,5 @@ class Database:
         return values
 
 
-s = Database('database.db')
+# s = Database('database.db')
 
