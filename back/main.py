@@ -3,7 +3,7 @@ from formas.reg_and_log_form import Reg_form, Login_form
 from db import Database
 
 d = Database
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['secret_key'] = 'secret_key'
 
 
