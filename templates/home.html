@@ -1,28 +1,59 @@
+{% block home_block %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title></title>
+  <title>{{title}}</title>
   <link href="../static/css/static.css" rel="stylesheet" type="text/css">
 </head>
 <main>
   <header class="header">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary"><img src="" alt="logotype"></a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Главная страница</a></li>
-          <li><a href="#" class="nav-link px-2 text-white"> Виды услуг </a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Примеры работ</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">О нас</a></li>
-        </ul>
+    <div class="div px-3 py-2 bg-dark text-white">
+      <div class="container" >
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="link">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><a href="/bootstrap"/></svg>
+          </a>
 
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Log-in</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <li>
+              <a href="#" class="nav-link text-secondary">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><a href="/home"/></svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#speedometer2"/></svg>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#table"/></svg>
+                Orders
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg>
+                Products
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#people-circle"/></svg>
+                Customers
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </header>
+  {% block about_block %}
+  {% endblock %}
+
 </main>
 </html>
+{% endblock %}
