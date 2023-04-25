@@ -4,7 +4,7 @@ from db import Database
 
 d = Database('database.db')
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
-app.config['secret_key'] = 'secret_key'
+app.config['SECRET_KEY'] = 'secret_key'
 
 
 @app.route('/')

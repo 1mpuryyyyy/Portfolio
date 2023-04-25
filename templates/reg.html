@@ -1,7 +1,7 @@
-{% extends home_block %}
+{% extends 'home.html' %}
 {% block registration_block %}
     <div class="registration-cssave">
-    <form method="post">
+    <form method="post" class="r">
     <h3 class="text-center"> Внесение данных</h3>
     <div class="form-group">
         <input class="form-control item" type="number" name="idi" minlength="6" id="idi" placeholder="почта" required>
