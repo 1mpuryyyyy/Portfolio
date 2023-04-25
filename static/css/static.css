@@ -1,17 +1,36 @@
-
-.nav {
-    display: flex;
-    flex-direction: row;
+html{
+    background: #000;
+    font-family: Helvetica;
 }
-.nav li {
-
-    list-style-type: none;
-}
-.nav a{
-    text-decoration: none;
-}
-header{
-  background:#1E262D;
+#header{
   width:100%;
   position:relative
+}
+.logo{
+  float:left;
+  padding-top: 10px;
+}
+.logo a{
+  font-size:28px;
+  display:block;
+  padding:0 0 0 20px
+}
+nav ul{
+  margin-left: 50px;
+  float: left;
+  position:relative
+}
+nav li{
+  list-style:none;
+  float:left;
+  margin: 10px;
+}
+#header:after{
+  content:"";
+  clear:both;
+  display:block
+}
+nav li a{
+    text-decoration: none;
+    color: #fff;
 }
