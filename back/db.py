@@ -25,17 +25,18 @@ class Database:
         password VARCHAR(32) NOT NULL 
         );""")
 
-    def crate_recorts_reg(self, name: str, surnmae: str, email: str, password: str):
-        f = self.con('SELECT id+1 FROM peoples_data_reg ORDER BY id DESK LIMIT 1;', fetchall=True)
+    def crate_recorts_reg(self, name: str, surname: str, email: str, password: str):
+        f = self.con('SELECT id+1 FROM peoples_data_reg ORDER BY id DESC LIMIT 1;', fetchall=True)
         f = 0 if f == [] else f[0][0]
-        self.con(""" INSERT INTO peoples_data_reg (name, surname, email, password) VALUES(?, ?, ?, ?);""",
-                 params=(name, surnmae, email, password))
+        print(f)
+        self.con("INSERT INTO peoples_data_reg (name, surname, email, password) VALUES(?, ?, ?, ?);",
+                 params=(name, surname, email, password))
 
     def get_values(self, id):
         values = self.con('SELECT * FROM peoples_data_reg WHERE id=?', params=(id,), off=True, fetchall=False)
         return values
 
 
-# s = Database('database.db')
-# print(s.get_values(1))
+s = Database('database.db')
+print(s.get_values(2))
 

@@ -25,10 +25,10 @@ def services():
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
     r = Reg_form()
-    if request.method == 'POST':
+    if r.Reg_submit():
         name, surname, email, password = r.name.data, r.surname.data, r.email.data, r.password.data
         if name and surname and email and password:
-            d.crate_recorts_reg(name, surname, email, password)
+            d.crate_recorts_reg(name=str(name), surname=str(surname), email=str(email), password=str(password))
     return render_template('reg.html', title='Регистрация пользователя', form=r)
 
 
