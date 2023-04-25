@@ -2,7 +2,7 @@ from flask import render_template, Flask, request
 from formas.reg_and_log_form import Reg_form, Login_form
 from db import Database
 
-d = Database
+d = Database('database.db')
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['secret_key'] = 'secret_key'
 
@@ -36,9 +36,9 @@ def reg():
 def log():
     h = Login_form()
     if request.method == 'POST':
-        email, password = h.email.data, h.password.data
-        if email and password:
-            d.creating_tables_log(email, password)
+        pass
+        # email, password = h.email.data, h.password.data
+
     return render_template('log.html', title='Вход', form=h)
 
 

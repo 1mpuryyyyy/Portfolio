@@ -24,11 +24,6 @@ class Database:
         email VARCHAR(32) NOT NULL,
         password VARCHAR(32) NOT NULL 
         );""")
-        self.con(""" CREATE TABLE IF NOT EXISTS peoples_data_log (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        email VARCHAR(32) NOT NULL,
-        password VARCHAR(32) NOT NULL
-        );""")
 
     def crate_recorts_reg(self, name: str, surnmae: str, email: str, password: str):
         f = self.con('SELECT id+1 FROM peoples_data_reg ORDER BY id DESK LIMIT 1;', fetchall=True)
@@ -36,17 +31,11 @@ class Database:
         self.con(""" INSERT INTO peoples_data_reg (name, surname, email, password) VALUES(?, ?, ?, ?);""",
                  params=(name, surnmae, email, password))
 
-    def creating_tables_log(self, email: str, password: str):
-        k = self.con('SELECT FROM peoples_data_log ORDER BY id DESC LIMIT 1;')
-        k = 0 if k == [] else k[0][0]
-        self.con("""INSERT INTO peoples_data_log (email, password)  VALUES(?, ?)""", params=(email, password))
-
-    def get_values(self, n):
-        if n == 1:
-            values = self.con('SELECT * FORM peoples_data_reg WHERE id=?', params=(id,), off=True, fetchall=False)
-        else:
-            values = self.con('SELECT * FROM peoples_data_log WHERE id=?', params=(id,), off=True, fetchall=False)
+    def get_values(self, id):
+        values = self.con('SELECT * FROM peoples_data_reg WHERE id=?', params=(id,), off=True, fetchall=False)
         return values
 
+
 # s = Database('database.db')
-# s.creating_tables()
+# print(s.get_values(1))
+
