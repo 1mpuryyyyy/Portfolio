@@ -1,5 +1,6 @@
-from flask import render_template, Flask
+from flask import render_template, Flask, request, redirect
 from formas.reg_and_log_form import Reg_form, Login_form
+from formas.serv_form import Make_Serv
 from db import Database
 
 d = Database('database.db')
@@ -17,8 +18,11 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/services')
+@app.route('/services', methods=['GET', 'POST'])
 def services():
+    form = Make_Serv
+    if request.method == 'POST':
+        pass
     return render_template('services.html')
 
 
@@ -26,26 +30,27 @@ def services():
 def reg():
     r = Reg_form()
     if r.Reg_submit():
-        name, surname, email, password = r.name.data, r.surname.data, r.email.data, r.password.data
-        if name and surname and email and password:
-            print('1323')
-            d.crate_recorts_reg(name=str(name), surname=str(surname), email=str(email), password=str(password))
+        prov = False
+        login, email, password = r.login.data, r.email.data, r.password.data
+        if login and email and password and not (d.get_values(login)):
+            d.crate_recorts_reg(login=str(login), email=str(email), password=str(password))
+            prov = True
+            return redirect('/'), prov  # Возвращает словарь, выбрать второй элемент(P.S. Это для Вани)
+        else:
+            return "Аккаунт с таким логином уже существует, попробуйте другой"
+
     return render_template('reg.html', title='Регистрация пользователя', form=r)
-
-
-@app.route('/admin')
-def admin():
-    return render_template('')
 
 
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     h = Login_form()
-    if h.log_sub():
-        email, password = h.email.data, h.password.data
-        pass
-
-
+    if request.method == 'POST':
+        login, password = h.login.data, h.password.data
+        if d.get_values(login) and password:
+            return redirect('/')
+        elif login == 'Misha' and password == '12345678':
+            return redirect('/admin')
 
     return render_template('log.html', title='Вход', form=h)
 
@@ -53,6 +58,11 @@ def log():
 @app.route('/examples')
 def examples():
     return render_template('examples.html')
+
+
+@app.route('/admin')
+def admin():
+    return "<h1>Ваня, иди нахуй</h1>"
 
 
 if __name__ == '__main__':
