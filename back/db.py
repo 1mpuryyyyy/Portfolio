@@ -11,7 +11,7 @@ class Database:
         with sqlite3.connect(self.name_db) as d:
             d.cursor()
             if fetchall:
-                d.execute(text_for_execute, params).fetchall()
+                return d.execute(text_for_execute, params).fetchall()
             else:
                 d.execute(text_for_execute, params)
                 d.commit()
@@ -26,17 +26,15 @@ class Database:
         );""")
 
     def crate_recorts_reg(self, name: str, surname: str, email: str, password: str):
-        f = self.con('SELECT id+1 FROM peoples_data_reg ORDER BY id DESC LIMIT 1;', fetchall=True)
+        f = self.con('SELECT id FROM peoples_data_reg ORDER BY id DESC LIMIT 1;', fetchall=True)
         f = 0 if f == [] else f[0][0]
-        print(f)
         self.con("INSERT INTO peoples_data_reg (name, surname, email, password) VALUES(?, ?, ?, ?);",
                  params=(name, surname, email, password))
 
     def get_values(self, id):
-        values = self.con('SELECT * FROM peoples_data_reg WHERE id=?', params=(id,), off=True, fetchall=False)
+        values = self.con('SELECT * FROM peoples_data_reg WHERE id=?', params=(id,), off=False, fetchall=True)
         return values
 
 
 s = Database('database.db')
-print(s.get_values(2))
-
+print(s.get_values(1))

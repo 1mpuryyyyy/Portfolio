@@ -28,16 +28,24 @@ def reg():
     if r.Reg_submit():
         name, surname, email, password = r.name.data, r.surname.data, r.email.data, r.password.data
         if name and surname and email and password:
+            print('1323')
             d.crate_recorts_reg(name=str(name), surname=str(surname), email=str(email), password=str(password))
     return render_template('reg.html', title='Регистрация пользователя', form=r)
+
+
+@app.route('/admin')
+def admin():
+    return render_template('')
 
 
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     h = Login_form()
-    if request.method == 'POST':
+    if h.log_sub():
+        email, password = h.email.data, h.password.data
         pass
-        # email, password = h.email.data, h.password.data
+
+
 
     return render_template('log.html', title='Вход', form=h)
 
