@@ -1,4 +1,4 @@
-from flask import render_template, Flask, request
+from flask import render_template, Flask
 from formas.reg_and_log_form import Reg_form, Login_form
 from db import Database
 
