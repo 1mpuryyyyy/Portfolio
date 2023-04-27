@@ -35,5 +35,5 @@ class Database:
         return values
 
 
-s = Database('database.db')
-print(s.get_values('Holio'))
+# s = Database('database.db')
+# print(s.get_values())
