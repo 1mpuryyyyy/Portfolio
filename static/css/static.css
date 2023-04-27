@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
 html{
-    background: #000;
+    background-image:url('https://phonoteka.org/uploads/posts/2022-02/1645026208_28-phonoteka-org-p-fon-granzh-temnii-31.jpg');
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-
+    color: #fff;
 }
 #header{
   width:100%;
@@ -46,13 +46,14 @@ section{
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: black;
+
 
 }
 .form-box{
+  padding-bottom: 10px;
   position: relative;
   width: 400px;
-  height: 450px;
+  height: 500px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
@@ -139,4 +140,8 @@ input:valid ~ label{
 .register a:hover{
   text-decoration: underline;
 
+}
+.home_body{
+background: #000;
+height: 100%;
 }
