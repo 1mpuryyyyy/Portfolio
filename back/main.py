@@ -30,15 +30,14 @@ def services():
 def reg():
     r = Reg_form()
     if r.Reg_submit():
-        prov = False
         login, email, password = r.login.data, r.email.data, r.password.data
-        if login and email and password and not (d.get_values(login)):
-            d.crate_recorts_reg(login=str(login), email=str(email), password=str(password))
-            prov = True
-            return redirect('/'), prov  # Возвращает словарь, выбрать второй элемент(P.S. Это для Вани)
-        else:
-            return "Аккаунт с таким логином уже существует, попробуйте другой"
-
+        if login and email and password:
+            if not (d.get_values(login)):
+                d.crate_recorts_reg(login=str(login), email=str(email), password=str(password))
+                print('1234565432')
+                return redirect('/')  # Возвращает словарь, выбрать второй элемент(P.S. Это для Вани)
+            else:
+                return "Аккаунт с таким логином уже существует, попробуйте другой"
     return render_template('reg.html', title='Регистрация пользователя', form=r)
 
 
@@ -51,6 +50,8 @@ def log():
             return redirect('/')
         elif login == 'Misha' and password == '12345678':
             return redirect('/admin')
+        else:
+            return '<h1>Идите нахуй, вас тут нет, пиздуёте регистрироваться</h1>'
 
     return render_template('log.html', title='Вход', form=h)
 
