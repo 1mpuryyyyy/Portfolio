@@ -1,1 +1,35 @@
-{% extends 'home.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <link href="../static/css/static.css" rel="stylesheet" type="text/css">
+</head>
+<main>
+  <div id="header">
+    <div class="logo">
+     </div>
+    <nav>
+      <ul>
+        <li>
+          <a href="/home"> Глaвная страница </a>
+        </li>
+        <li>
+          <a href="/examples"> Примеры работ </a>
+        </li>
+        <li>
+          <a href="/services"> Заказать услугу</a>
+        </li>
+        <li>
+          <a href="/reg">Регистрация</a>
+        </li>
+        <li>
+          <a href="/log"> Логин </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  {% block services_block %}
+  {% endblock %}
+</main>
+</html>

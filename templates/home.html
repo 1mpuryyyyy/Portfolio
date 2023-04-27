@@ -5,35 +5,10 @@
   <title>{{title}}</title>
   <link href="../static/css/static.css" rel="stylesheet" type="text/css">
 </head>
-<main>
-  <div id="header">
-    <div class="logo">
-     </div>
-    <nav>
-      <ul>
-        <li>
-          <a href="/about"> Глaвная страница </a>
-        </li>
-        <li>
-          <a href="/examples"> Примеры работ </a>
-        </li>
-        <li>
-          <a href="/services"> Заказать услугу</a>
-        </li>
-        <li>
-          <a href="/reg">Регистрация</a>
-        </li>
-        <li>
-          <a href="/log"> Логин </a>
-        </li>
-      </ul>
-    </nav>
+<body class="home_body">
+  <div>
+    <h1> Компания <span><a href="/home"> БУМ</a></span></h1>
   </div>
-  {% block about_block %}
-  {% endblock %}
-  {% block registration_block %}
-  {% endblock %}
-
-</main>
+</body>
 </html>
 {% endblock %}
