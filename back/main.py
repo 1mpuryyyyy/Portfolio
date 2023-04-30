@@ -38,9 +38,7 @@ def reg():
         if login and email and password and not (d.get_values(1, login)):
             d.crate_recorts_reg(login=str(login), email=str(email), password=str(password))
             prov = True
-            return redirect('/'), prov  # Возвращает словарь, выбрать второй элемент(P.S. Это для Вани)
-        else:
-            return "Аккаунт с таким логином уже существует, попробуйте другой"
+            return redirect('/about'), prov  # Возвращает словарь, выбрать второй элемент(P.S. Это для Вани)
 
     return render_template('reg.html', title='Регистрация пользователя', form=r, proverka=prov)
 
@@ -54,7 +52,7 @@ def log():
         if d.get_values(1, login) and password:
             check = True
             print(check)
-            return redirect('/')
+            return redirect('/about')
         elif login == 'Misha' and password == '12345678':
             check = True
             print(check)
