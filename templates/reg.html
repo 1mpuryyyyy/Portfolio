@@ -24,15 +24,11 @@
   <section>
     <div class='form-box'>
       <div class='form-value'>
-        <form action=''>
+        <form action='' method="post">
           <h2> Зарегистрироваться </h2>
             <div class='inputbox'>
-            <input type='text' name="surname" required>
-            <label for=''> Фамилия </label>
-          </div>
-            <div class='inputbox'>
-            <input type='text' name="name" required>
-            <label for=''> Имя </label>
+            <input type='text' name="login" required>
+            <label for=''> Логин </label>
           </div>
           <div class='inputbox'>
             <ion-icon name = 'mail-outline'></ion-icon>
@@ -47,7 +43,7 @@
           <div class='forget'>
             <label for=''><input type="checkbox" required> Запомнить меня </label>
           </div>
-          <button class="btn_log"> Зарегистрироваться </button>
+          <button class="btn_log" name="Reg_submit"> Зарегистрироваться </button>
           <div class = 'register'> Не Зарегистрированы? <a href='/log'> Войти </a>
           </div>
         </form>
