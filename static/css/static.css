@@ -5,28 +5,18 @@ html{
     padding: 0;
     color: #fff;
     font-family: trebuchet ms;
-}
+}               /* header основной страницы */
 #header{
-  width:100%;
-  position:relative
-}
-.logo{
-  float:left;
-  padding-top: 10px;
-}
-.logo a{
-  font-size:28px;
-  display:block;
-  padding:0 0 0 20px
+  width: 100%;
+  position: relative;
 }
 nav ul{
-  margin-left: 50px;
-  float: left;
-  position:relative
+  position:relative;
+  margin-top: 30px;
 }
 nav li{
-  list-style:none;
-  float:left;
+  list-style: none;
+  display: inline;
   margin: 10px;
 }
 #header:after{
@@ -39,6 +29,9 @@ nav li a{
     color: #fff;
     font-size: 22px;
 }
+.autorisation{
+    margin-left: 30%;
+}
 
 section{            /* формы html логина и регистрации */
   position: absolute;
@@ -47,8 +40,6 @@ section{            /* формы html логина и регистрации */
   align-items: center;
   min-height: 100vh;
   width: 100%;
-
-
 }
 .form-box{
   padding-bottom: 10px;
@@ -195,5 +186,8 @@ height: 35px;
     text-decoration: none;
     color: white;
 }
-
+.details{
+    height:70px;
+    width: 200px;
+}
 
