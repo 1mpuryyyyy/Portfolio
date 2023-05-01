@@ -1,10 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+/*@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);*/
 html{
     background-image:url('https://phonoteka.org/uploads/posts/2022-02/1645026208_28-phonoteka-org-p-fon-granzh-temnii-31.jpg');
-    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     color: #fff;
+    font-family: trebuchet ms;
 }
 #header{
   width:100%;
@@ -37,9 +37,10 @@ nav li{
 nav li a{
     text-decoration: none;
     color: #fff;
+    font-size: 22px;
 }
 
-section{
+section{            /* формы html логина и регистрации */
   position: absolute;
   display: flex;
   justify-content: center;
@@ -138,10 +139,61 @@ input:valid ~ label{
   font-weight: 600;
 }
 .register a:hover{
-  text-decoration: underline;
+  text-decoration: underline;       /* конец формы логина и регистрации */
 
 }
-.home_body{
-background: #000;
-height: 100%;
+.entering{              /* начальная страница*/
+    background: #000;
+    height: 100%;
+    color: #d7d7d7;
+    font-size: 16px;
+    background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1614277318_66-p-chernii-fon-derzkii-85.jpg');
+    text-align: right;
 }
+span a{
+    text-decoration: none;
+    color: #a0522d;
+    font-style: italic;
+}
+
+.home_body{
+    margin: 20px 12% 0 auto;
+}
+.elem{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom:  20px;
+}
+h1 span{
+    text-decoration: none;
+    color: #a0522d;
+}
+.table{
+    max-width: 600px;
+}
+.table th {
+    box-shadow: -5px -4px 4px #fff;
+    border-radius: 3px solid black;
+    align-content: center;
+}
+.table td{
+    text-align: center;
+}
+.enter_div  button{
+height: 35px;
+  width: 200px;
+  background: black;
+  font-weight: 700;
+  padding: .5em 2em;
+  border: 1px solid white;
+  border-radius: 10px;
+  transition: 0.2s;
+  margin: 50px 200px 0 0;
+}
+.enter_div  button:hover { background: #a0522d; }
+.enter_div a{
+    text-decoration: none;
+    color: white;
+}
+
+

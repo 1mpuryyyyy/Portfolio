@@ -1,14 +1,36 @@
-{% block home_block %}
-<html lang="ru">
+<html class="entering" lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>{{title}}</title>
-  <link href="../static/css/static.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href="../static/css/static.css" rel="stylesheet" type="text/css">
 </head>
-<body class="home_body">
-  <div>
-    <h1> Компания <span><a href="/home"> БУМ</a></span></h1>
-  </div>
+<body>
+<div class="home_body">
+    <div class="elem">
+        <h2> Компания <span><a href="/home"> БУМ</a></span></h2>
+    </div>
+    <div class="elem">
+        <h1>
+            Выполним ваши услуги <span> быстро </span> и <span> качественно </span>
+        </h1>
+    </div>
+    <div class="elem">
+        <table class="table">
+            <tr>
+                <th><h3> 01</h3></th>
+                <th><h3> 02</h3></th>
+                <th><h3> 03</h3></th>
+            </tr>
+            <tr>
+                <td>Написание и верстка сайта с нуля</td>
+                <td> Отсъём мероприятий</td>
+                <td> Монтаж видеоматериалов</td>
+            </tr>
+        </table>
+    </div>
+    <div class="enter_div">
+        <button><a href="/home">Продолжить</a></button>
+    </div>
+</div>
 </body>
 </html>
-{% endblock %}
