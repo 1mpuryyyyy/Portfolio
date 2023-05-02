@@ -36,4 +36,4 @@ class Database:
 
 
 # s = Database('database.db')
-# print(s.get_values())
+# s.creating_tables()
