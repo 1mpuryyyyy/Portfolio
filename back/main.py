@@ -2,6 +2,7 @@ from flask import render_template, Flask, request, redirect
 from formas.reg_and_log_form import Reg_form, Login_form
 from formas.serv_form import Make_Serv
 from db import Database
+from sends_emails import send_email
 
 d = Database('database.db')
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
@@ -21,10 +22,10 @@ def about():
 @app.route('/services', methods=['GET', 'POST'])
 def services():
     form = Make_Serv()
-    # if form.upload():
-    #     login, service, about_serv, number = d.get_values()[-1], form.service.data, form.about_serv.data, form.number.data
-    #     if service and number:  # Вань, сделай в "services.html" форму для заполения описания услуги"
-    #         send_email(f"{login}, хочет заказать у вас услугу: {service}, Описание: {number}")
+    if form.upload():
+        login, service, about_serv, number = 'Misha', form.service.data, form.about_serv.data, form.number.data
+        if service and number:  # Вань, сделай в "services.html" форму для заполения описания услуги"
+            send_email(f"{login}, хочет заказать у вас услугу: {service}, Описание: {about_serv}. Номер телефона: {number}")
 
     return render_template('services.html')
 
