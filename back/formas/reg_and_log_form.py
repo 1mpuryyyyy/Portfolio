@@ -4,13 +4,13 @@ from wtforms.validators import Length
 
 
 class Reg_form(FlaskForm):
-    login = StringField("Ваше имя:", validators=[Length(min=2)])
+    name = StringField("Ваше имя:", validators=[Length(min=2)])
     email = StringField("Почта")
     password = PasswordField('Пароль')
     Reg_submit = SubmitField('Зарегистрироваться')
 
 
 class Login_form(FlaskForm):
-    login = StringField("Логин")
+    email = StringField("Почта")
     password = PasswordField('Пароль')
     log_sub = SubmitField("Войти")

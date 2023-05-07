@@ -10,7 +10,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="/about"> Глaвная страница </a>
+                    <a href="/home"> Глaвная страница </a>
                 </li>
                 <li>
                     <a href="/examples"> Примеры работ </a>
@@ -18,12 +18,18 @@
                 <li>
                     <a href="/services"> Заказать услугу</a>
                 </li>
+                {% if not current_user.is_authenticated %}
                 <li class="autorisation">
                     <a href="/reg">Регистрация</a>
                 </li>
                 <li>
                     <a href="/log"> Логин </a>
                 </li>
+                {% else %}
+                <li class="autorisation">
+                    <a href="/logout"> Выход </a>
+                </li>
+                {% endif %}
             </ul>
         </nav>
     </div>
