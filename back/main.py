@@ -1,11 +1,12 @@
-from flask import render_template, Flask, request, redirect
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
-from data import db_session
-from data.user import User
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask import render_template, Flask, request, redirect
 from formas.reg_and_log_form import Reg_form, Login_form
 from formas.serv_form import Make_Serv
 from sends_emails import send_email
+from data import db_session
+from data.user import User
+
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['SECRET_KEY'] = 'sxcc1cf4c152bhfbu2cs51cd14;'
@@ -21,11 +22,13 @@ def load_user(user_id: int):
     db_sess = db_session.create_session()
     return db_sess.query(User).filter(User.id == user_id).first()
 
+
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect("/")
+
 
 @app.route('/')
 def home():
@@ -42,12 +45,12 @@ def about():
 def services():
     form = Make_Serv()
     if form.upload():
-        name, service, about_serv, number = current_user.name, form.service.data, form.about_serv.data, form.number.data
+        name, surname, service, about_serv, number = current_user.name, current_user.surname, form.service.data, form.about_serv.data, form.number.data
         if service and number:
             send_email(
-                f"{name}, хочет заказать у вас услугу: {service}, Описание: {about_serv}. Номер телефона: {number}")
+                f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание: {about_serv}. Номер телефона: {number}")
 
-    return render_template('services.html')
+    return render_template('services.html', name_user=current_user.name)
 
 
 @app.route('/reg', methods=['GET', 'POST'])
@@ -55,11 +58,12 @@ def reg():
     h = Reg_form()
     db_sess = db_session.create_session()
     if request.method == 'POST':
-        name, email, password = h.name.data, h.email.data, h.password.data
+        name, surname, email, password = h.name.data, h.surname.data, h.email.data, h.password.data
         if name and email and password:
             user = User()
             user.name = name
             user.email = email
+            user.surname = surname
             user.hashed_password = generate_password_hash(password)  # Хэширует пароль
             db_sess.add(user)
             db_sess.commit()
