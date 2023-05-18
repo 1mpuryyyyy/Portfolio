@@ -1,11 +1,11 @@
-from flask_login import LoginManager, login_user, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask import render_template, Flask, request, redirect
-from formas.reg_and_log_form import Reg_form, Login_form
-from formas.serv_form import Make_Serv
-from sends_emails import send_email
-from data import db_session
-from data.user import User
+# from flask_login import LoginManager, login_user, logout_user, current_user
+# from werkzeug.security import generate_password_hash, check_password_hash
+# from flask import render_template, Flask, request, redirect
+# from formas.reg_and_log_form import Reg_form, Login_form
+# from formas.serv_form import Make_Serv
+# from sends_emails import send_email
+# from data import db_session
+# from data.user import User
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['SECRET_KEY'] = 'sxcc1cf4c152bhfbu2cs51cd14;'
