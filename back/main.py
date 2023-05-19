@@ -1,19 +1,16 @@
 from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, Flask, request, redirect
-from flask_uploads import UploadSet, IMAGES, configure_uploads
 from formas.reg_and_log_form import Reg_form, Login_form
 from formas.serv_form import Make_Serv
 from sends_emails import send_email
 from data import db_session
 from data.user import User
+import os
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['SECRET_KEY'] = 'sxcc1cf4c152bhfbu2cs51cd14;'
-app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
-
-photos = UploadSet('photos', IMAGES)
-configure_uploads(app, photos)  # обработка и сохраниние изображений
+app.config['UPLOAD_FOLDER'] = 'uploads'
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_message = "Cмотреть данную страницу/делать данное действие можно " \
@@ -42,19 +39,34 @@ def about():
     return render_template('about.html', title='about', current_user=current_user)
 
 
+def allowed_type(filename, types):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in types
+
 
 @app.route('/services', methods=['GET', 'POST'])
 def services():
     if current_user.is_authenticated:
         form = Make_Serv()
         if request.method == 'POST':
+            db_sess = db_session.create_session()
+            user = db_sess.query(User).filter(
+                User.id == current_user.id).first()  # ищет нужного пользователя через query
             name, surname, service, about_serv, number = current_user.name, current_user.surname, form.service.data, \
                                                          form.about_serv.data, form.number.data
-
+            files = request.files.getlist("photo[]")  # "Забирает фотки из формы"
+            if files:
+                f_count = 0
+                for file in files:
+                    if allowed_type(file.filename, ['png', 'jpg', 'docx', 'doc', 'txt']):
+                        filename = f"{current_user.id}_{user.id_serv}_{f_count}.{file.filename.rsplit('.', 1)[1].lower()}"  # название файла
+                        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                        f_count += 1
+            user.id_serv += 1
+            db_sess.commit()
             if service and number:
-                send_email(
-                    f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание:"
-                    f" {about_serv}. Номер телефона: {number}")
+                send_email(f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание:"
+                           f" {about_serv}. Номер телефона: {number} Номер заказа: {user.id_serv - 1}")
     else:
         return redirect('/reg')
 
