@@ -45,4 +45,19 @@ def send_email(message):
         return f"{ex} \n Check your login or password, please!"
 
 
-# print(send_email('Misha_test'))
+def send_emal_to_user(messag, email):
+    sender = 'bymworking@gmail.com'
+    password = 'lvuqbqehjxfnfwiy'
+    server = sl.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    try:
+        server.login(sender, password)
+        msg = MIMEText(messag)
+        msg['SUBJECT'] = 'Ваш заказ зарегистрирован'
+        server.sendmail(sender, email, msg.as_string())
+        return 'The message was sen successful!'
+    except Exception as ex:
+        return f"{ex} \n Check your password"
+
+
+# print(send_emal_to_user('Misha_test', 'popov27051971@gmail.com'))

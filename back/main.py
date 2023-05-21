@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, Flask, request, redirect
 from formas.reg_and_log_form import Reg_form, Login_form
 from formas.serv_form import Make_Serv
-from sends_emails import send_email
+from sends_emails import send_email, send_emal_to_user
 from data import db_session
 from data.user import User
 import os
@@ -54,7 +54,7 @@ def services():
                 User.id == current_user.id).first()  # ищет нужного пользователя через query
             name, surname, service, about_serv, number = current_user.name, current_user.surname, form.service.data, \
                                                          form.about_serv.data, form.number.data
-            files = request.files.getlist("photo[]")  # "Забирает фотки из формы"
+            files = request.files.getlist("photo[]")  # Забирает фотки из формы
             if files:
                 f_count = 0
                 for file in files:
@@ -67,6 +67,10 @@ def services():
             if service and number:
                 send_email(f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание:"
                            f" {about_serv}. Номер телефона: {number} Номер заказа: {user.id_serv - 1}")
+                send_emal_to_user(
+                    f"Над заказом, {service}, была начата работа, наши спецалисты в скром времени свяжутся с вами и уточнят подробности",
+                    current_user.email)
+
     else:
         return redirect('/reg')
 
