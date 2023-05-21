@@ -79,26 +79,27 @@ def services():
 
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
-        h = Reg_form()
-        db_sess = db_session.create_session()
-        if request.method == 'POST':
-            name, surname, email, password = h.name.data, h.surname.data, h.email.data, h.password.data
-            if name and email and password:
-                user = db_sess.query(User).filter(User.email == email).first()
-                if not (user and check_password_hash(user.hashed_password, password)):
-                    user = User()
-                    user.name = name
-                    user.email = email
-                    user.surname = surname
-                    user.hashed_password = generate_password_hash(password)  # Хэширует пароль
-                    db_sess.add(user)
-                    db_sess.commit()
-                    login_user(user)
-                    send_emal_to_user(f"{current_user.name} {current_user.surnamae}, ваш аккаунт успешно зарегистирован", current_user.email, 0)
-                    return redirect('/home')
-                else:
-                    return redirect('/log')
-        return render_template('reg.html', title='Регистрация пользователя', form=h)
+    h = Reg_form()
+    db_sess = db_session.create_session()
+    if request.method == 'POST':
+        name, surname, email, password = h.name.data, h.surname.data, h.email.data, h.password.data
+        if name and email and password:
+            user = db_sess.query(User).filter(User.email == email).first()
+            if not user:
+                user = User()
+                user.name = name
+                user.email = email
+                user.surname = surname
+                user.hashed_password = generate_password_hash(password)  # Хэширует пароль
+                db_sess.add(user)
+                db_sess.commit()
+                login_user(user)
+                send_emal_to_user(f"{current_user.name} {current_user.surname}, ваш аккаунт успешно зарегистирован",
+                                  current_user.email, 0)
+                return redirect('/home')
+            else:
+                return redirect('/log')
+    return render_template('reg.html', title='Регистрация пользователя', form=h)
 
 
 @app.route('/log', methods=['GET', 'POST'])
