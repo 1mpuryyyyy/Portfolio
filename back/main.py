@@ -94,7 +94,7 @@ def reg():
                     db_sess.add(user)
                     db_sess.commit()
                     login_user(user)
-                    send_emal_to_user(f"{current_user.name} {current_user.surnmae}, ваш аккаунт успешно зарегистирован", current_user.email, 0)
+                    send_emal_to_user(f"{current_user.name} {current_user.surname}, ваш аккаунт успешно зарегистирован", current_user.email, 0)
                     return redirect('/home')
                 else:
                     return redirect('/log')
@@ -111,7 +111,7 @@ def log():
             user = db_sess.query(User).filter(User.email == email).first()
             if user and check_password_hash(user.hashed_password, password):
                 login_user(user)
-                send_emal_to_user(f"{current_user.name} {current_user.surnmae}, успешный вход в аккаунт", current_user.email, 0)
+                send_emal_to_user(f"{current_user.name} {current_user.surname}, успешный вход в аккаунт", current_user.email, 0)
                 return redirect('/home')
             else:
                 return redirect('/reg')

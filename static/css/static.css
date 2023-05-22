@@ -1,19 +1,31 @@
 /*@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);*/
 html{
     background-image:url('https://phonoteka.org/uploads/posts/2022-02/1645026208_28-phonoteka-org-p-fon-granzh-temnii-31.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
     color: #fff;
     font-family: trebuchet ms;
+    height: 0;
+    width: 100%;
 }               /* header основной страницы */
+
 #header{
-  width: 100%;
-  position: relative;
-  border-bottom: 3px solid white;
+    width: auto;
+    position: relative;
+    border-bottom: 3px solid white;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 nav ul{
-  position:relative;
-  margin-top: 30px;
+    position:relative;
+    margin-top: 30px;
 }
 nav li{
   list-style: none;
@@ -29,9 +41,6 @@ nav li a{
     text-decoration: none;
     color: #fff;
     font-size: 22px;
-}
-.autorisation{
-    margin-left: 30%;
 }
 
 section{            /* формы html логина и регистрации */
@@ -50,7 +59,7 @@ section{            /* формы html логина и регистрации */
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
-  backdrop-filter: blur;
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,7 +145,7 @@ input:valid ~ label{
 }
 .entering{              /* начальная страница*/
     background: #000;
-    height: 100%;
+    height: auto;
     color: #d7d7d7;
     font-size: 16px;
     background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1614277318_66-p-chernii-fon-derzkii-85.jpg');
@@ -181,6 +190,7 @@ height: 35px;
   border-radius: 10px;
   transition: 0.2s;
   margin: 50px 200px 0 0;
+  color: white;
 }
 .enter_div  button:hover { background: #a0522d; }
 .enter_div a{
@@ -190,5 +200,76 @@ height: 35px;
 .details{
     height:70px;
     width: 200px;
+}
+ /*тут скрытая панелька*/
+.navbar {
+    display: none;
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+@media only screen and (max-width: 980px){
+    .navbar{
+        display: block;
+    }
+    .navigation{
+        display: none;
+    }
 }
 
