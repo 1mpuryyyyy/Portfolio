@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{title}}</title>
     <link href="../static/css/static.css" rel="stylesheet" type="text/css">
+    <link href="">
 </head>
-<main>
+<body>
     <div id="header">
         <nav>
             <div class="navbar">
@@ -46,9 +47,12 @@
             </ul>
         </nav>
     </div>
-    {% block services_block %}
-    {% endblock %}
-<script>
+    <main>
+        {% block services_block %}
+        {% endblock %}
+    </main>
+
+    <script>
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
@@ -64,6 +68,7 @@ window.onclick = function(e) {
       }
   }
 }
-</script>
-</main>
+
+    </script>
+</body>
 </html>

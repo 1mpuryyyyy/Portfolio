@@ -1,6 +1,6 @@
 /*@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);*/
-html{
-    background-image:url('https://phonoteka.org/uploads/posts/2022-02/1645026208_28-phonoteka-org-p-fon-granzh-temnii-31.jpg');
+html, body{
+    background-image:url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613376934_10-p-fon-drim-art-bezhevii-11.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -14,13 +14,14 @@ html{
 }               /* header основной страницы */
 
 #header{
+    background: black;
     width: auto;
     position: relative;
-    border-bottom: 3px solid white;
+    border-bottom: 1px solid white;
 }
 nav{
+    height: 100px;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 nav ul{
@@ -28,14 +29,14 @@ nav ul{
     margin-top: 30px;
 }
 nav li{
-  list-style: none;
-  display: inline;
-  margin: 10px;
+    list-style: none;
+    float: left;
+    margin: 10px;
 }
 #header:after{
-  content:"";
-  clear:both;
-  display:block
+    content:"";
+    clear:both;
+    display:block
 }
 nav li a{
     text-decoration: none;
@@ -50,6 +51,7 @@ section{            /* формы html логина и регистрации */
   align-items: center;
   min-height: 100vh;
   width: 100%;
+
 }
 .form-box{
   padding-bottom: 10px;
@@ -145,7 +147,7 @@ input:valid ~ label{
 }
 .entering{              /* начальная страница*/
     background: #000;
-    height: auto;
+    height: 100%;
     color: #d7d7d7;
     font-size: 16px;
     background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1614277318_66-p-chernii-fon-derzkii-85.jpg');
@@ -271,5 +273,16 @@ height: 35px;
     .navigation{
         display: none;
     }
+}
+
+main{
+    background: white;
+    border-radius: 10px;
+    min-height: 100%;
+    margin: 15px;
+    opacity: 0.8;
+}
+h1{
+    color: black;
 }
 
