@@ -9,7 +9,7 @@ html, body{
 }               /* header основной страницы */
 #header{
     width: auto;
-    position: fixed;
+    position: relative;
     display: flex;
     top: -3%;
     right: 2px;

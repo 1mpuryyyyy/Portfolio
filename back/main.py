@@ -34,10 +34,9 @@ def logout():
     return redirect('/')
 
 
-
 def allowed_type(filename, types):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in types
+        filename.rsplit('.', 1)[1].lower() in types
 
 
 @app.route('/services', methods=['GET', 'POST'])
@@ -49,7 +48,7 @@ def services():
             user = db_sess.query(User).filter(
                 User.id == current_user.id).first()  # ищет нужного пользователя через query
             name, surname, service, about_serv, number = current_user.name, current_user.surname, form.service.data, \
-                                                         form.about_serv.data, form.number.data
+                form.about_serv.data, form.number.data
             files = request.files.getlist("photo[]")  # Забирает фотки из формы
             if files:
                 f_count = 0
@@ -64,7 +63,7 @@ def services():
                 send_email(f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание:"
                            f" {about_serv}. Номер телефона: {number} Номер заказа: {user.id_serv - 1}")
                 send_emal_to_user(
-                    f"Над заказом, {service}, была начата работа, наши спецалисты в скром времени свяжутся с вами и уточнят подробности",
+                    f"Над заказом, {service}, была начата работа, наши спецалисты в скором времени свяжутся с вами и уточнят подробности",
                     current_user.email, 0)
 
     else:
