@@ -24,8 +24,8 @@ def load_user(user_id: int):
 
 
 @app.route('/')
-def home():
-    return render_template('home.html', title='home')
+def about():
+    return render_template('about.html', title='about', current_user=current_user)
 
 
 @app.route("/logout")
@@ -33,10 +33,6 @@ def logout():
     logout_user()
     return redirect('/')
 
-
-@app.route('/home')
-def about():
-    return render_template('about.html', title='about', current_user=current_user)
 
 
 def allowed_type(filename, types):
@@ -96,7 +92,7 @@ def reg():
                 login_user(user)
                 send_emal_to_user(f"{current_user.name} {current_user.surname}, ваш аккаунт успешно зарегистирован",
                                   current_user.email, 0)
-                return redirect('/home')
+                return redirect('/')
             else:
                 return redirect('/log')
     return render_template('reg.html', title='Регистрация пользователя', form=h)
@@ -112,7 +108,7 @@ def log():
             user = db_sess.query(User).filter(User.email == email).first()
             if user and check_password_hash(user.hashed_password, password):
                 login_user(user)
-                return redirect('/home')
+                return redirect('/')
             else:
                 return redirect('/reg')
     return render_template('log.html', title='Вход')
