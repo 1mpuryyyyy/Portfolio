@@ -1,32 +1,22 @@
-/*@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);*/
+@import url("https://fonts.googleapis.com/css?family=Lora:400,400i,700");
 html, body{
-    background-image:url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613376934_10-p-fon-drim-art-bezhevii-11.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-    color: #fff;
-    font-family: trebuchet ms;
+    background: #c8d2e6;
+    color: #black;
     height: 0;
-    width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Lora, sans-serif;
 }               /* header основной страницы */
-
 #header{
-    background: black;
     width: auto;
-    position: relative;
-    border-bottom: 1px solid white;
+    position: fixed;
+    display: flex;
+    top: -3%;
+    right: 2px;
 }
 nav{
     height: 100px;
-    display: flex;
-    justify-content: space-between;
-}
-.dropdown p{
-    position:relative;
-    font-size: 22px;
+
 }
 nav ul{
     position:relative;
@@ -44,15 +34,12 @@ nav li{
 }
 nav li a{
     text-decoration: none;
-    color: #fff;
+    color: #8282bf;
     font-size: 22px;
-}
-nav li a:hover {
-    color: black;
-    background: #f34723;
-    padding: 5px 2px 5px 2px;
     border-radius: 10px;
-    }
+    border-bottom: 1px solid white;
+}
+
 
 section{            /* формы html логина и регистрации */
   position: absolute;
@@ -69,7 +56,7 @@ section{            /* формы html логина и регистрации */
   width: 400px;
   height: 500px;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid black;
   border-radius: 20px;
   backdrop-filter: blur(5px);
   display: flex;
@@ -78,7 +65,7 @@ section{            /* формы html логина и регистрации */
 }
 section h2{
   font-size: 2em;
-  color: #ffffff;
+  color: #8282bf;
   text-align: center;
 }
 .inputbox{
@@ -93,7 +80,7 @@ section h2{
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
-  color: #fff;
+  color: #8282bf;
   font-size: 1em;
   pointer-events: none;
   transition: .5s;
@@ -117,7 +104,7 @@ input:valid ~ label{
 .inputbox ion-icon{
   position: absolute;
   right: 8px;
-  color: #fff;
+  color: #8282bf;
   font-size: 1.2em;
   top: 20px;
 }
@@ -125,7 +112,7 @@ input:valid ~ label{
 .forget{
   margin: -15px 0 15px;
   font-size: 0.9em;
-  color: #fff;
+  color: #8282bf;
   display: flex;
   justify-content: center;
 }
@@ -142,31 +129,21 @@ input:valid ~ label{
 }
 .register{
   font-size: 0.9em;
-  color: #fff;
+  color: #8282bf;
   text-align: center;
   margin: 25px 0 10px;
 }
 .register a{
   text-decoration: none;
-  color: #fff;
+  color: #8282bf;
   font-weight: 600;
+  border-bottom: 1px solid #8282bf;
 }
 .register a:hover{
   text-decoration: underline;       /* конец формы логина и регистрации */
 
 }
-.entering{              /* начальная страница*/
-    background: #000;
-    height: 100%;
-    color: #d7d7d7;
-    font-size: 16px;
-    background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1614277318_66-p-chernii-fon-derzkii-85.jpg');
-    text-align: right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-}
+
 span a{
     text-decoration: none;
     color: #a0522d;
@@ -174,11 +151,11 @@ span a{
 }
 
 .home_body{
-    margin: 20px 12% 0 auto;
+    margin: 20px 6% 0 50px;
 }
 .elem{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-bottom:  20px;
 }
 h1 span{
@@ -189,14 +166,16 @@ h1 span{
     max-width: 600px;
 }
 .table th {
-    box-shadow: -5px -4px 4px #fff;
-    border-radius: 3px solid black;
+    box-shadow: -5px -4px 4px #8282bf;
+    border-radius: 3px;
     align-content: center;
 }
 .table td{
     text-align: center;
+    font-weight: 600;
+    font-size: 17px;
 }
-.enter_div  button{
+/*.enter_div  button{
 height: 35px;
   width: 200px;
   background: black;
@@ -206,18 +185,19 @@ height: 35px;
   border-radius: 10px;
   transition: 0.2s;
   margin: 50px 200px 0 0;
-  color: white;
+  color: black;
 }
 .enter_div  button:hover { background: #a0522d; }
 .enter_div a{
     text-decoration: none;
-    color: white;
+    color: white;*/
 }
 .details{
     height:70px;
     width: 200px;
 }
  /* тут скрытая панелька */
+/*
 .navbar {
     display: none;
     overflow: hidden;
@@ -248,10 +228,8 @@ height: 35px;
     margin: 0;
 }
 
-.dropbtn p:hover {
-    padding: 5px 2px 5px 2px;
-    background-color: #f34723;
-    border-radius: 10px;
+.tri-poloski {
+    height: 40px;
 }
 
 .dropdown-content {
@@ -288,8 +266,9 @@ height: 35px;
         display: none;
     }
 }
+*/
 
-main{
+.main{
     background: white;
     border-radius: 10px;
     min-height: 100%;
@@ -298,5 +277,238 @@ main{
 }
 h1{
     color: black;
+}
+
+                /* css для нового превью */
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+
+}
+p {
+  margin: 0;
+}
+#burger-toggle {
+  position: absolute;
+  appearance: none;
+  opacity: 0;
+}
+#burger-toggle:checked ~ .menu {
+  opacity: 1;
+  visibility: visible;
+}
+#burger-toggle:checked ~ .menu .menu-nav-link span div, #burger-toggle:checked ~ .menu img, #burger-toggle:checked ~ .menu .title p {
+  transform: translateY(0);
+  transition: 1.2s 0.1s cubic-bezier(0.35, 0, 0.07, 1);
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(1) img {
+  transition-delay: 0.18s;
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(2) img {
+  transition-delay: 0.26s;
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(3) img {
+  transition-delay: 0.34s;
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(4) img {
+  transition-delay: 0.42s;
+}
+#burger-toggle:checked ~ .burger-menu .line::after {
+  transform: translateX(0);
+}
+#burger-toggle:checked ~ .burger-menu .line:nth-child(1) {
+  transform: translateY(calc(var(--burger-menu-radius) / 5)) rotate(45deg);
+}
+#burger-toggle:checked ~ .burger-menu .line:nth-child(2) {
+  transform: scaleX(0);
+}
+#burger-toggle:checked ~ .burger-menu .line:nth-child(3) {
+  transform: translateY(calc(var(--burger-menu-radius) / -5)) rotate(-45deg);
+}
+.burger-menu {
+  --burger-menu-radius: 4em;
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  z-index: 100;
+  display: block;
+  width: var(--burger-menu-radius);
+  height: var(--burger-menu-radius);
+  outline: none;
+  cursor: pointer;
+}
+.burger-menu .line {
+  position: absolute;
+  left: 25%;
+  width: 50%;
+  height: 3px;
+  background: #8282bf;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.burger-menu .line:nth-child(1) {
+  top: 30%;
+}
+.burger-menu .line:nth-child(2) {
+  top: 50%;
+}
+.burger-menu .line:nth-child(3) {
+  top: 70%;
+}
+.burger-menu .line::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color-darker);
+  transform: translateX(-100%);
+  transition: 0.25s;
+}
+.burger-menu .line:nth-child(2)::after {
+  transition-delay: 0.1s;
+}
+.burger-menu .line:nth-child(3)::after {
+  transition-delay: 0.2s;
+}
+.burger-menu:hover .line::after {
+  transform: translateX(0);
+}
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1a1e23;
+  opacity: 0;
+  overflow-x: hidden;
+  visibility: hidden;
+  transition: 0.3s;
+}
+@media screen and (max-width: 750px) {
+  .menu {
+    display: flex;
+  }
+}
+.menu-nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  list-style-type: none;
+}
+@media screen and (max-width: 750px) {
+  .menu-nav {
+    flex-direction: column;
+  }
+}
+.menu-nav-item {
+  flex: 1;
+}
+.menu-nav-link {
+  position: relative;
+  display: inline-flex;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+}
+.menu-nav-link span {
+  overflow: hidden;
+}
+.menu-nav-link span div {
+  transform: translateY(102%);
+}
+.menu-nav-link::after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+.menu-nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.menu .gallery {
+  margin-top: 60px;
+  text-align: center;
+}
+.menu .title {
+  font-size: 24px;
+  color: white;
+  overflow: hidden;
+}
+.menu .title p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transform: translateY(102%);
+}
+.menu .images {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 750px) {
+  .menu .images {
+    justify-content: center;
+  }
+}
+.menu .images .image-link {
+  width: 15vw;
+  margin: 0 12px;
+  overflow: hidden;
+}
+@media screen and (max-width: 750px) {
+  .menu .images .image-link {
+    width: 40vw;
+    margin: 0 12px 12px 0;
+  }
+}
+.menu .images .image-link .image {
+  position: relative;
+  transition: 0.6s;
+}
+.menu .images .image-link .image::before {
+  position: absolute;
+  content: attr(data-label);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: 0.4s;
+}
+.menu .images .image-link:hover .image {
+  transform: scale(1.2);
+}
+.menu .images .image-link:hover .image::before {
+  opacity: 1;
+}
+.menu .images img {
+  height: 250px;
+  transform: translateY(102%);
 }
 
