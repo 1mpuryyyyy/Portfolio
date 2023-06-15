@@ -1,5 +1,26 @@
-<ul>
-    {% for elem in elems %}
-        <h2></h2><a href="">{{ elem }}</a></h2> <br>
-    {% endfor %}
-</ul>
+{% extends 'about.html' %}
+{% block serv_block %}
+
+
+{% for elem in elems %}
+<div class="card" style="width: 18rem;">
+    {% if elem == 'Написание БД' %}
+    <div class="cards"><img src="https://media.proglib.io/posts/2020/01/08/46bffee5579093709253d7ec0674e8af.jpg" class="card-img-top"
+         alt="{{ elem }}"></div>
+    {% endif %}
+    {% if elem == 'Верстка сайта' %}
+    <img src="https://cdn.freelance.ru/img/portfolio/pics/00/38/8B/3705778.jpg?mt=adfdf857" class="card-img-top"
+         alt="{{ elem }}">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{ elem }}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        <div class="for_div">
+            <button class="btn-success" type="submit"> Заказать услугу</button>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

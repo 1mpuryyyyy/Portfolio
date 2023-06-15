@@ -4,7 +4,7 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{title}}</title>
     <link href="../static/css/static.css" rel="stylesheet" type="text/css">
-    <link href="">
+
 </head>
 <body>
 <div class="body">
@@ -32,32 +32,10 @@
             </ul>
         </nav>
     </div>
-    <div class="home_body">
-        <div class="elem">
-            <h2> Компания <span><a href="/home"> БУМ</a></span></h2>
-        </div>
-        <div class="elem">
-            <h1>
-                Выполним ваши услуги <span> быстро </span> и <span> качественно </span>
-            </h1>
-        </div>
-        <div class="elem">
-            <table class="table">
-                <tr>
-                    <th><h3> 01</h3></th>
-                    <th><h3> 02</h3></th>
-                    <th><h3> 03</h3></th>
-                </tr>
-                <tr>
-                    <td>Написание и верстка сайта с нуля</td>
-                    <td> Фотосъёмка Вашего мероприятия </td>
-                    <td> Написание базы данных и корректировка сайта</td>
-                </tr>
-            </table>
-        </div>
-
-    </div>
-
+    {% block pattern_block %}
+    {% endblock %}
+    {% block serv_block %}
+    {% endblock %}
     <div class="menu">
         <div class="menu-inner">
             <ul class="menu-nav">

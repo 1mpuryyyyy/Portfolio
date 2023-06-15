@@ -25,13 +25,14 @@ def load_user(user_id: int):
 
 @app.route('/')
 def about():
-    return render_template('about.html', title='about', current_user=current_user)
+    return render_template('pattern.html', title='about', current_user=current_user)
 
 
 @app.route('/serv')
 def serv():
-    servi = ['Написание БД', 'Вернстка сайта', 'Монтаж видео', 'СЪёмка вашего видео']
-    return render_template('serv.html', elems=servi)
+    servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Съёмка вашего видео']
+    links = ['https://media.proglib.io/posts/2020/01/08/46bffee5579093709253d7ec0674e8af.jpg', '', '', '']
+    return render_template('serv.html', elems=servi, links=links)
 
 
 @app.route("/logout")

@@ -9,7 +9,7 @@ html, body{
 }               /* header основной страницы */
 #header{
     width: auto;
-    position: relative;
+    position: absolute;
     display: flex;
     top: -3%;
     right: 2px;
@@ -24,7 +24,7 @@ nav ul{
 }
 nav li{
     list-style: none;
-    float: left;
+    float: right;
     margin: 10px;
 }
 #header:after{
@@ -39,6 +39,23 @@ nav li a{
     border-radius: 10px;
     border-bottom: 1px solid white;
 }
+/* выход на главную страницу */
+
+#home{
+    width: auto;
+    position: relative;
+    display: flex;
+    top: -3%;
+    right: 2px;
+    justify-content: flex-end;
+}
+
+li.home{
+    list-style: none;
+    float: right;
+    margin: 10px;
+}
+
 
 
 section{            /* формы html логина и регистрации */
@@ -510,5 +527,47 @@ p {
 .menu .images img {
   height: 250px;
   transform: translateY(102%);
+}
+
+/* css карточек услуг */
+.card-img-top{
+    height: 200px;
+    border-radius: 5px;
+    width: 17rem;
+    margin: 8px;
+}
+.card:hover {
+    transform: scale(1.1);
+    transition: 0.6s;
+}
+.card{
+    margin: 10px;
+    border: 2px solid #8282bf;
+    border-radius: 5px;
+}
+.card-body {
+    max-width: 18rem;
+    min-width: 18rem;
+    border-radius: 5px;
+}
+.card-title{
+    text-align: center;
+}
+.btn-primary{
+    text-align: center;
+}
+.btn-success{
+    background: #8282bf;
+    padding: 5px;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+}
+.for_div{
+    display: flex;
+    justify-content: center;
+}
+.btn-success:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
