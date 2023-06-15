@@ -28,6 +28,12 @@ def about():
     return render_template('about.html', title='about', current_user=current_user)
 
 
+@app.route('/serv')
+def serv():
+    servi = ['Написание БД', 'Вернстка сайта', 'Монтаж видео', 'СЪёмка вашего видео']
+    return render_template('serv.html', elems=servi)
+
+
 @app.route("/logout")
 def logout():
     logout_user()
