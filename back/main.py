@@ -30,7 +30,7 @@ def about():
 
 @app.route('/serv')
 def serv():
-    servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Съёмка вашего видео']
+    servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Видеосъемка']
     links = ['https://media.proglib.io/posts/2020/01/08/46bffee5579093709253d7ec0674e8af.jpg', '', '', '']
     return render_template('serv.html', elems=servi, links=links)
 
