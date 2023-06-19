@@ -79,6 +79,11 @@ def services():
     return render_template('services.html', name_user=current_user.name, form=form)
 
 
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
+
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
     h = Reg_form()
