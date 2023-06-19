@@ -58,9 +58,9 @@ def send_emal_to_user(messag, email, n):
         else:
             msg['SUBJECT'] = 'Информация об аккаунте'
         server.sendmail(sender, email, msg.as_string())
-        return 'The message was sen successful!'
+        return 'The message was sent successful!'
     except Exception as ex:
         return f"{ex} \n Check your password"
 
 
-# print(send_emal_to_user('Misha_test', 'popov27051971@gmail.com'))
+print(send_email('Misha_test'))

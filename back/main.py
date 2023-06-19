@@ -2,7 +2,7 @@ from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, Flask, request, redirect
 from formas.reg_and_log_form import Reg_form, Login_form
-from formas.serv_form import Make_Serv
+from formas.serv_form import *
 from sends_emails import send_email, send_emal_to_user
 from data import db_session
 from data.user import User
@@ -28,11 +28,12 @@ def about():
     return render_template('pattern.html', title='about', current_user=current_user)
 
 
-@app.route('/serv')
+@app.route('/serv', methods=['GET', 'POST'])
 def serv():
+    f = Name_of_serv()
     groups = ['Сайт', 'БД', 'Видео']
     servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Видеосъемка']
-    return render_template('serv.html', elems=servi, )
+    return render_template('serv.html', elems=servi, form=f)
 
 
 @app.route("/logout")
@@ -50,11 +51,12 @@ def allowed_type(filename, types):
 def services():
     if current_user.is_authenticated:
         form = Make_Serv()
+        y = Name_of_serv()
+
         if request.method == 'POST':
             db_sess = db_session.create_session()
-            user = db_sess.query(User).filter(
-                User.id == current_user.id).first()  # ищет нужного пользователя через query
-            name, surname, service, about_serv, number = current_user.name, current_user.surname, form.service.data, \
+            user = db_sess.query(User).filter(User.id == current_user.id).first()  # ищет нужного пользователя через query
+            name, surname, service, about_serv, number = current_user.name, current_user.surname, y.service.data, \
                 form.about_serv.data, form.number.data
             files = request.files.getlist("photo[]")  # Забирает фотки из формы
             if files:
@@ -67,8 +69,7 @@ def services():
             user.id_serv += 1
             db_sess.commit()
             if service and number:
-                send_email(f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание:"
-                           f" {about_serv}. Номер телефона: {number} Номер заказа: {user.id_serv - 1}")
+                send_email(f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание:{about_serv}. Номер телефона: {number} Номер заказа: {user.id_serv - 1}")
                 send_emal_to_user(
                     f"Над заказом, {service}, была начата работа, наши спецалисты в скором времени свяжутся с вами и уточнят подробности",
                     current_user.email, 0)
@@ -119,7 +120,7 @@ def log():
             user = db_sess.query(User).filter(User.email == email).first()
             if user and check_password_hash(user.hashed_password, password):
                 login_user(user)
-                return redirect('/')
+                return redirect('/services')
             else:
                 return redirect('/reg')
     return render_template('log.html', title='Вход')

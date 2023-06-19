@@ -4,7 +4,11 @@ from wtforms.validators import Length
 
 
 class Make_Serv(FlaskForm):
-    service = SelectField("Выбрать услугу")
     number = StringField("Телефонный номер")
     about_serv = StringField(validators=[Length(max=100)])
     upload = SubmitField('Отправить')
+
+
+class Name_of_serv(FlaskForm):
+    service = StringField()
+
