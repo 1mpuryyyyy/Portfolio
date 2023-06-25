@@ -1,56 +1,68 @@
 {% extends 'about.html' %}
 {% block serv_block %}
+    {% for elem in elems %}
+    <div class="card" style="width: 18rem;">
+        {% if elem == 'Написание БД' %}
+        <div class="cards"><img src="https://media.proglib.io/posts/2020/01/08/46bffee5579093709253d7ec0674e8af.jpg"
+                                class="card-img-top"
+                                alt="{{ elem }}"></div>
+        <div class="card-body">
+            <h5 class="card-title">{{ elem }}</h5>
+            <p class="card-text">База данных – используются для хранения данных вашего приложения, могут содержать в
+                себе огромное количество записей, что очень удобно для создания, например, сайтов.</p>
+            <div class="for_div">
+                <form action="/services" method="post">
+                    <input class="btn-success" type="submit" name="service" value="{{elem}}">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% if elem == 'Верстка сайта' %}
+        <img src="https://cdn.freelance.ru/img/portfolio/pics/00/38/8B/3705778.jpg?mt=adfdf857" class="card-img-top"
+             alt="{{ elem }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ elem }}</h5>
+            <p class="card-text">Вёрстка сайта — это процесс переноса вашего прототипа в готовый проект. Выделяются два
+                типа разработчиков</p>
+            <div class="for_div">
+                <form action="/services" method="post">
+                    <input class="btn-success" type="submit" name="service" value="{{elem}}">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% if elem == 'Монтаж видео' %}
+        <div class="cards"><img src="https://frankfurt.apollo.olxcdn.com/v1/files/12y1k7hlvio63-KZ/image;s=1000x750"
+                                class="card-img-top"
+                                alt="{{ elem }}"></div>
+        <div class="card-body">
+            <h5 class="card-title">{{ elem }}</h5>
+            <p class="card-text">Творческий и технический процесс в кинематографе, на телевидении или звукозаписывающих
+                студиях, позволяющий в результате соединения отдельных фрагментов исходных записей получить единое,
+                композиционно цельное произведение.</p>
+            <div class="for_div">
+                <form action="/services" method="post">
+                    <input class="btn-success" type="submit" name="service" value="{{elem}}">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        {% if elem == 'Видеосъемка' %}
+        <div class="cards"><img src="https://autobort.ru/wp-content/uploads/2023/01/video2.jpg" class="card-img-top"
+                                alt="{{ elem }}"></div>
+        <div class="card-body">
+            <h5 class="card-title">{{ elem }}</h5>
+            <p class="card-text">Видео съёмка — наша команда выезжает на заданный вам объект с профессиональной
+                техникой, отсняты видеоматериал — будет отправлен на любой, удобный вам сервис.</p>
+            <div class="for_div">
+                <form action="/services" method="post">
+                    <input class="btn-success" type="submit" name="service" value="{{elem}}">
+                </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
 
-
-{% for elem in elems %}
-<div class="card" style="width: 18rem;">
-    {% if elem == 'Написание БД' %}
-    <div class="cards"><img src="https://media.proglib.io/posts/2020/01/08/46bffee5579093709253d7ec0674e8af.jpg" class="card-img-top"
-         alt="{{ elem }}"></div>
-    <div class="card-body">
-        <h5 class="card-title">{{ elem }}</h5>
-        <p class="card-text">База данных – используются для хранения данных вашего приложения, могут содержать в себе огромное количество записей, что очень удобно для создания, например, сайтов.</p>
-        <div class="for_div">
-            <form action="/services" method="post">
-                <input class="btn-success" type="submit" name="service" value="{{elem}}">
-            </form>
-        </div>
-    </div>
-    {% endif %}
-    {% if elem == 'Верстка сайта' %}
-    <img src="https://cdn.freelance.ru/img/portfolio/pics/00/38/8B/3705778.jpg?mt=adfdf857" class="card-img-top"
-         alt="{{ elem }}">
-    <div class="card-body">
-        <h5 class="card-title">{{ elem }}</h5>
-        <p class="card-text">Вёрстка сайта — это процесс переноса вашего прототипа в готовый проект. Выделяются два типа разработчиков</p>
-        <div class="for_div">
-            <a href="/services"><button class="btn-success" type="submit"> Заказать услугу</button></a>
-        </div>
-    </div>
-    {% endif %}
-    {% if elem == 'Монтаж видео' %}
-    <div class="cards"><img src="https://frankfurt.apollo.olxcdn.com/v1/files/12y1k7hlvio63-KZ/image;s=1000x750" class="card-img-top"
-         alt="{{ elem }}"></div>
-    <div class="card-body">
-        <h5 class="card-title">{{ elem }}</h5>
-        <p class="card-text">Творческий и технический процесс в кинематографе, на телевидении или звукозаписывающих студиях, позволяющий в результате соединения отдельных фрагментов исходных записей получить единое, композиционно цельное произведение.</p>
-        <div class="for_div">
-            <a href="/services"><button class="btn-success" type="submit"> Заказать услугу</button></a>
-        </div>
-    </div>
-    {% endif %}
-    {% if elem == 'Видеосъемка' %}
-    <div class="cards"><img src="https://autobort.ru/wp-content/uploads/2023/01/video2.jpg" class="card-img-top"
-         alt="{{ elem }}"></div>
-    <div class="card-body">
-        <h5 class="card-title">{{ elem }}</h5>
-        <p class="card-text">Видео съёмка — наша команда выезжает на заданный вам объект с профессиональной техникой, отсняты видеоматериал — будет отправлен на любой, удобный вам сервис.</p>
-        <div class="for_div">
-            <a href="/services"><button class="btn-success" type="submit"> Заказать услугу</button></a>
-        </div>
-    </div>
-    {% endif %}
-</div>
-{% endfor %}
 
 {% endblock %}
