@@ -12,7 +12,7 @@ html, body{
     position: absolute;
     display: flex;
     top: -3%;
-    right: 2px;
+    right: 2%;
 }
 nav{
     height: 100px;
@@ -546,12 +546,17 @@ p {
 }
 
 /* css карточек услуг */
+.div{
+    display: flex;
+    margin: 7%;
+}
 .card-img-top{
     height: 200px;
     border-radius: 5px;
     width: 17rem;
     margin: 8px;
 }
+
 .card:hover {
     transform: scale(1.1);
     transition: 0.6s;
@@ -567,6 +572,7 @@ p {
     max-width: 18rem;
     min-width: 18rem;
     border-radius: 5px;
+    margin: 2px;
 }
 .card-title{
     text-align: center;
@@ -593,7 +599,11 @@ p {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-
+@media only screen and (max-width: 1030px){
+    .div{
+        display: block;
+    }
+}
 /* css оформления заказа */
 
 
@@ -752,7 +762,7 @@ tfoot {
   vertical-align: middle;
 }
 
-.iphone {
+#iphone {
   background-color: inherit;
   border-radius: 2em;
   border: 2px solid #6161ad;
@@ -760,7 +770,13 @@ tfoot {
   inline-size: 400px;
   overflow: auto;
   padding: 2em;
+  display: none;
+  left: 100%;
 }
+.btn-success:hover .card::after {
+    display: none;
+}
+
 #story{
     border: none;
     background-color: transparent;
@@ -776,6 +792,7 @@ tfoot {
 	position: relative;
 	display: inline-block;
 }
+
 .input-file-text {
     white-space: nowrap;
     font-size: 13px;
