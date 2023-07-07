@@ -19,7 +19,7 @@ def send_email(message):
         msg = MIMEMultipart()
         msg['SUBJECT'] = 'Новый заказ!'
         msg.attach(MIMEText(message))
-        for file in os.listdir('uploads'):
+        for file in os.listdir('uploads')[1:]:
             filename = os.path.basename(file)
             ftype, encoding = mimetypes.guess_type(file)
             file_type, subtype = ftype.split('/')
@@ -45,7 +45,7 @@ def send_email(message):
         return f"{ex} \n Check your login or password, please!"
 
 
-def send_emal_to_user(messag, email, n):
+def send_email_to_user(messag, email, n):
     sender = 'bymworking@gmail.com'
     password = 'lvuqbqehjxfnfwiy'
     server = sl.SMTP('smtp.gmail.com', 587)
@@ -58,9 +58,9 @@ def send_emal_to_user(messag, email, n):
         else:
             msg['SUBJECT'] = 'Информация об аккаунте'
         server.sendmail(sender, email, msg.as_string())
-        return 'The message was sent successful!'
+        return 'The message was sen successful!'
     except Exception as ex:
         return f"{ex} \n Check your password"
 
 
-
+# print(send_email('Misha_test'))

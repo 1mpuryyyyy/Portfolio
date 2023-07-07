@@ -1,9 +1,9 @@
 from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import render_template, Flask, request, redirect
+from flask import render_template, Flask, request, redirect, url_for
 from formas.reg_and_log_form import Reg_form, Login_form
 from formas.serv_form import *
-from sends_emails import send_email, send_emal_to_user
+from sends_emails import *
 from data import db_session
 from data.user import User
 import os
@@ -28,18 +28,10 @@ def about():
     return render_template('pattern.html', title='about', current_user=current_user)
 
 
-@app.route('/serv', methods=['GET', 'POST'])
-def serv():
-    f = Name_of_serv()
-    groups = ['Сайт', 'БД', 'Видео']
-    servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Видеосъемка']
-    return render_template('serv.html', elems=servi, form=f)
-
-
 @app.route("/logout")
 def logout():
     logout_user()
-    return redirect('/')
+    return redirect(url_for('about'))
 
 
 def allowed_type(filename, types):
@@ -47,18 +39,17 @@ def allowed_type(filename, types):
         filename.rsplit('.', 1)[1].lower() in types
 
 
-@app.route('/services', methods=['GET', 'POST'])
-def services():
+@app.route('/serv', methods=['GET', 'POST'])
+def serv():
+    servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Видеосъемка']
     if current_user.is_authenticated:
         form = Make_Serv()
-        y = Name_of_serv()
-
         if request.method == 'POST':
             db_sess = db_session.create_session()
-            user = db_sess.query(User).filter(User.id == current_user.id).first()  # ищет нужного пользователя через query
-            name, surname, service, about_serv, number = current_user.name, current_user.surname, y.service.data, \
-                form.about_serv.data, form.number.data
-            files = request.files.getlist("photo[]")  # Забирает фотки из формы
+            user = db_sess.query(User).filter(
+                User.id == current_user.id).first()  # ищет нужного пользователя через query
+            name, surname, about_serv, number = current_user.name, current_user.surname, form.about_serv.data, form.number.data
+            files = request.files.getlist("photo[]")  # Забирает фотки из формы [] - для множественного набора
             if files:
                 f_count = 0
                 for file in files:
@@ -68,16 +59,20 @@ def services():
                         f_count += 1
             user.id_serv += 1
             db_sess.commit()
-            if service and number:
-                send_email(f"{name} {surname}, хочет заказать у вас услугу: {service}, Описание:{about_serv}. Номер телефона: {number} Номер заказа: {user.id_serv - 1}")
-                send_emal_to_user(
-                    f"Над заказом, {service}, была начата работа, наши спецалисты в скором времени свяжутся с вами и уточнят подробности",
-                    current_user.email, 0)
+            if about_serv and number:
+                send_email(
+                    f"{name} {surname}, сделал заказ."
+                    f" Описание:{about_serv}."
+                    f" Номер телефона: {number}."
+                    f" Номер заказа: {user.id_serv - 1}.")
+                send_email_to_user(
+                    f"Над вашим заказом, была начата работа, наши спецалисты в скором времени свяжутся с вами и уточнят подробности",
+                    current_user.email, 1)
 
     else:
-        return redirect('/reg')
+        return redirect(url_for('reg'))
 
-    return render_template('services.html', name_user=current_user.name, form=form)
+    return render_template('serv.html', name_user=current_user.name, form=form, elems=servi)
 
 
 @app.route('/info')
@@ -102,11 +97,11 @@ def reg():
                 db_sess.add(user)
                 db_sess.commit()
                 login_user(user)
-                send_emal_to_user(f"{current_user.name} {current_user.surname}, ваш аккаунт успешно зарегистирован",
-                                  current_user.email, 0)
+                send_email_to_user(f"{current_user.name} {current_user.surname}, ваш аккаунт успешно зарегистирован",
+                                   current_user.email, 0)
                 return redirect('/')
             else:
-                return redirect('/log')
+                return redirect(url_for('log'))
     return render_template('reg.html', title='Регистрация пользователя', form=h)
 
 
@@ -120,9 +115,9 @@ def log():
             user = db_sess.query(User).filter(User.email == email).first()
             if user and check_password_hash(user.hashed_password, password):
                 login_user(user)
-                return redirect('/services')
+                return redirect(url_for('about'))
             else:
-                return redirect('/reg')
+                return redirect(url_for('reg'))
     return render_template('log.html', title='Вход')
 
 
