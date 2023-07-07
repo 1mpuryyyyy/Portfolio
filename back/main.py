@@ -83,6 +83,7 @@ def info():
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
     h = Reg_form()
+    flag = False
     db_sess = db_session.create_session()
     if request.method == 'POST':
         name, surname, email, password = h.name.data, h.surname.data, h.email.data, h.password.data
@@ -97,17 +98,18 @@ def reg():
                 db_sess.add(user)
                 db_sess.commit()
                 login_user(user)
+                flag = True
                 send_email_to_user(f"{current_user.name} {current_user.surname}, ваш аккаунт успешно зарегистирован",
                                    current_user.email, 0)
-                return redirect('/')
             else:
                 return redirect(url_for('log'))
-    return render_template('reg.html', title='Регистрация пользователя', form=h)
+    return render_template('reg.html', title='Регистрация пользователя', form=h, flag=flag)
 
 
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     f = Login_form()
+    flag = False
     db_sess = db_session.create_session()
     if request.method == 'POST':
         email, password = f.email.data, f.password.data
@@ -115,10 +117,9 @@ def log():
             user = db_sess.query(User).filter(User.email == email).first()
             if user and check_password_hash(user.hashed_password, password):
                 login_user(user)
-                return redirect(url_for('about'))
             else:
                 return redirect(url_for('reg'))
-    return render_template('log.html', title='Вход')
+    return render_template('log.html', title='Вход', flag=flag)
 
 
 @app.route('/examples')
