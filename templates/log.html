@@ -1,48 +1,51 @@
 <html xmlns="http://www.w3.org/1999/html">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>{{ title }}</title>
-  <link href="../static/css/static.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{{ title }}</title>
+    <link href="../static/css/static.css" rel="stylesheet" type="text/css"/>
 </head>
 <div id="home">
     <nav>
-      <ul>
-        <li>
-          <a href="/">Глaвная страница</a>
-        </li>
-      </ul>
+        <ul>
+            <li>
+                <a href="/">Глaвная страница</a>
+            </li>
+        </ul>
     </nav>
 </div>
 <body>
 
-  <section>
+<section>
     <div class='form-box'>
-      <div class='form-value'>
-        <form action='' method="post" >
-          <h2> Войти </h2>
-          <div class='inputbox'>
-            <ion-icon name = 'mail-outline'></ion-icon>
-            <input type='text' name="email" id="email" autocomplete=off />
-            <label for='email'> Почта </label>
-          </div>
-          <div class='inputbox'>
-            <ion-icon name = 'lock-closed-outline'></ion-icon>
-            <input type='password' name="password" autocomplete="off"/>
-            <label for=''> Пароль </label>
-          </div>
-          <div class='forget'>
-            <label for=''><input type="checkbox" required> Запомнить меня </label>
-          </div>
-          <button class="btn_log" name="log_sub"> Войти в аккаунт </button>
-          <div class = 'register'> Нет аккаунта? <a href='/reg'> Зарегистрироваться </a>
-          </div>
-        </form>
-      </div>
+        <div class='form-value'>
+            <form action='' method="post">
+                <h2> Войти </h2>
+                <div class='inputbox'>
+                    <ion-icon name='mail-outline'></ion-icon>
+                    <input type='text' name="email" id="email" autocomplete=off/>
+                    <label for='email'> Почта </label>
+                </div>
+                <div class='inputbox'>
+                    <ion-icon name='lock-closed-outline'></ion-icon>
+                    <input type='password' name="password" autocomplete="off"/>
+                    <label for=''> Пароль </label>
+                </div>
+                <div class='forget'>
+                    <label for=''><input type="checkbox" required> Запомнить меня </label>
+                </div>
+                <form action="/">
+                    <input type='submit' class="btn_log" name="log_sub" value="Войти в аккаунт"/>
+                </form>
+
+                <div class='register'> Нет аккаунта? <a href='/reg'> Зарегистрироваться </a>
+                </div>
+            </form>
+        </div>
     </div>
-  </section>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+</section>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

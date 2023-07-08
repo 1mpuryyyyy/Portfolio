@@ -2,14 +2,19 @@
 html, body{
     background: #c8d2e6;
     color: #black;
-    height: 0;
   min-height: 100vh;
   margin: 0;
   font-family: Lora, sans-serif;
-}               /* header основной страницы */
+}
+:root {
+  --color-primary: #8282bf;
+  --font-size-h1: 1.25rem;
+  --font-size-h2: 1rem;
+}
+              /* header основной страницы */
 #header{
     width: auto;
-    position: absolute;
+    position: fixed;
     display: flex;
     top: -3%;
     right: 2%;
@@ -87,7 +92,7 @@ select:-webkit-autofill:focus {
   padding-bottom: 10px;
   position: relative;
   width: 400px;
-  height: 500px;
+  height: 600px;
   background: transparent;
   border: 2px solid black;
   border-radius: 20px;
@@ -179,21 +184,26 @@ input:valid ~ label{
 
 span a{
     text-decoration: none;
-    color: #a0522d;
+    color: #fddde6;
     font-style: italic;
 }
 
 .home_body{
     margin: 20px 6% 0 50px;
+
 }
+
 .elem{
     display: flex;
     justify-content: center;
-    margin-bottom:  20px;
+    margin-bottom:  10px;
+}
+.elem h1{
+    color: var(--color-primary);
 }
 h1 span{
     text-decoration: none;
-    color: #a0522d;
+    color: #fddde6;
 }
 .table{
     max-width: 600px;
@@ -207,6 +217,9 @@ h1 span{
     text-align: center;
     font-weight: 600;
     font-size: 17px;
+}
+.table h3, td {
+    color: #8282bf;;
 }
 /*.enter_div  button{
 height: 35px;
@@ -318,9 +331,28 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
-
+  width: 100%;
+}
+.info{
+    width: 100%;
+    background-image: url('https://phonoteka.org/uploads/posts/2022-01/1643160698_91-phonoteka-org-p-it-fon-94.jpg');
+    height: 600px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.tit{
+    margin-top: 10px;
+    margin-bottom: 30px;
+    box-shadow: -5px -4px 4px #8282bf;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 28px;
+    color: #6161ad;
 }
 p {
   margin: 0;
@@ -607,11 +639,7 @@ p {
 /* css оформления заказа */
 
 
-:root {
-  --color-primary: #8282bf;
-  --font-size-h1: 1.25rem;
-  --font-size-h2: 1rem;
-}
+
 
 
 * {
@@ -850,4 +878,71 @@ tfoot {
 /* Disabled */
 .input-file input[type=file]:disabled + .input-file-btn {
 	background-color: #eee;
+}
+/* Список преимуществ */
+.dbl-border {
+list-style: none;
+margin: 0;
+}
+.dbl-border li {
+margin: 10px 0;
+position: relative;
+}
+.dbl-border h2{
+    font-size: 20px;
+}
+.dbl-border li:before {
+content: "";
+width: 6px;
+height: 40%;
+background: var(--color-primary);
+position: absolute;
+top: 30%;
+left: -12px;
+}
+.dbl-border a:hover {background: #D4D8D9;}
+
+/* часть с фотографом */
+.photo {
+    display: flex;
+    width: 100%;
+    margin: 30px;
+    margin-top: 60px;
+    justify-content: center;
+    align-items: center;
+}
+.photo img{
+    height: 400px;
+    width: 40%;
+    border-radius: 10px;
+}
+.photo h2{
+    font-size: 20px;
+    margin: 10px;
+}
+.photo span {
+    color: #6161ad;
+}
+.br{
+    width: 80%;
+    border: 3px solid var(--color-primary);
+    border-radius: 10px;
+}
+.contact{
+    margin: 30px;
+}
+.contacts{
+    margin: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+.contacts div{
+    display: flex;
+    justify-content: center;
+
+}
+.contacts img {
+    height: 30px;
 }
