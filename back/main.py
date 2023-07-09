@@ -75,8 +75,6 @@ def serv():
     return render_template('serv.html', name_user=current_user.name, form=form, elems=servi)
 
 
-
-
 @app.route('/reg', methods=['GET', 'POST'])
 def reg():
     h = Reg_form()

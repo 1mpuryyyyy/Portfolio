@@ -14,7 +14,7 @@
                 себе огромное количество записей, что очень удобно для создания, например, сайтов.</p>
             <div class="for_div">
                 <form action="" class="myForm" onsubmit="event.preventDefault();" method="post">
-                    <input class="btn-success" type="submit"  name="service" onclick="chpok()" value="{{ elem }}">
+                    <input class="btn-success" type="submit" name="service" onclick="chpok()" value="{{ elem }}">
                 </form>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 типа разработчиков</p>
             <div class="for_div">
                 <form action="" class="myForm" onsubmit="event.preventDefault();" method="post">
-                    <input class="btn-success" type="submit"  name="service" onclick="chpok()"
+                    <input class="btn-success" type="submit" name="service" onclick="chpok()"
                            value="{{elem}}">
                 </form>
             </div>
@@ -48,7 +48,7 @@
                 композиционно цельное произведение.</p>
             <div class="for_div">
                 <form action="" class="myForm" onsubmit="event.preventDefault();" method="post">
-                    <input class="btn-success" type="submit"  name="service" onclick="chpok()"
+                    <input class="btn-success" type="submit" name="service" onclick="chpok()"
                            value="{{elem}}">
                 </form>
             </div>
@@ -125,6 +125,7 @@ $('.input-file input[type=file]').on('change', function(){
 	let file = this.files[0];
 	$(this).closest('.input-file').find('.input-file-text').html(file.name);
 });
+
 </script>
 
 <script>
@@ -149,5 +150,6 @@ function chpok(){
 var form = document.getElementsByClassName("myForm");
 function handleForm(event) { event.preventDefault(); }
 form.addEventListener('submit', handleForm);
+
 </script>
 {% endblock %}

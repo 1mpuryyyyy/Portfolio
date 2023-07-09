@@ -913,12 +913,16 @@ left: -12px;
 }
 .photo img{
     height: 400px;
-    width: 40%;
+    width: 600px;
     border-radius: 10px;
 }
 .photo h2{
     font-size: 20px;
     margin: 10px;
+    float: right;
+}
+.photo .none {
+    display: none;
 }
 .photo span {
     color: #6161ad;
@@ -945,4 +949,22 @@ left: -12px;
 }
 .contacts img {
     height: 30px;
+}
+@media only screen and (max-width: 950px){
+    .photo {
+        flex-direction: column;
+    }
+    .photo h2 {
+        display: none;
+    }
+    .photo .none {
+        display: block;
+    }
+    .photo .block {
+        display: block;
+    }
+    .photo img {
+        width: 80%;
+        height: 60%;
+    }
 }
