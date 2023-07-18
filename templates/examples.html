@@ -1,1 +1,24 @@
 {% extends 'about.html' %}
+{% block examples_block %}
+<div class="news-container">
+    <div class="news-item">
+        <div class="slider" id="slider">
+            <div><img src="static/images/slider_1.jpg" alt="Слайд 1"></div>
+            <div><img src="static/images/slider_2.jpg" alt="Слайд 2"></div>
+        </div>
+        <h3> Сайт лендинг </h3>
+        <p> Одностраничный сайт с регистрацией, включающий в себя слайдер и фотокарточки</p>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#slider').slick({
+            infinite: true,
+            prevArrow: '<div class="slick-btn-own slick-prev">&#8592;</div>',
+            nextArrow: '<div class="slick-btn-own slick-next">&#8594;</div>'
+        });
+    });
+</script>
+{% endblock %}
