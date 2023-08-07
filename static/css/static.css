@@ -358,7 +358,7 @@ p {
   margin: 0;
 }
 #burger-toggle {
-  position: absolute;
+  position: fixed;
   appearance: none;
   opacity: 0;
 }
@@ -393,6 +393,9 @@ p {
 }
 #burger-toggle:checked ~ .burger-menu .line:nth-child(3) {
   transform: translateY(calc(var(--burger-menu-radius) / -5)) rotate(-45deg);
+#burger-toggle:checked ~  .slick-prev{
+  display: none;
+}
 }
 .burger-menu {
   --burger-menu-radius: 4em;

@@ -1,15 +1,18 @@
 from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import render_template, Flask, request, redirect, url_for
-from formas.reg_and_log_form import Reg_form, Login_form
-from formas.serv_form import *
-from sends_emails import *
+from back.formas.reg_and_log_form import Reg_form, Login_form
+from back.formas.serv_form import *
+from back.sends_emails import *
 from data import db_session
+from back.settings import get_key
 from data.user import User
 import os
 
-app = Flask(__name__, template_folder='../templates', static_folder='../static')
-app.config['SECRET_KEY'] = 'sxcc1cf4c152bhfbu2cs51cd14;'
+secret_key = get_key(r'C:\Users\Миша\PycharmProjects\Portfolio\Danger').key.secret_key
+
+app = Flask(__name__, template_folder='templates', static_folder='static')
+app.config['SECRET_KEY'] = secret_key
 app.config['UPLOAD_FOLDER'] = 'uploads'
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -70,7 +73,7 @@ def serv():
                     current_user.email, 1)
 
     else:
-        return redirect(url_for('reg'))
+        return redirect(url_for('log'))
 
     return render_template('serv.html', name_user=current_user.name, form=form, elems=servi)
 

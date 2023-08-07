@@ -13,3 +13,5 @@ class User(SqlAlchemyBase, UserMixin):
     name = db.Column(db.String(32), nullable=False)
     surname = db.Column(db.String(32), nullable=False)
     hashed_password = db.Column(db.String, nullable=False)
+
+
