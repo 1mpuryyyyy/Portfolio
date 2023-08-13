@@ -69,6 +69,20 @@
             </div>
         </div>
         {% endif %}
+        {% if elem == 'Написание тг бота' %}
+        <div class="cards"><img src="https://www.searchenginejournal.com/wp-content/uploads/2018/05/qa-chatbot.png" class="card-img-top"
+                                alt="{{ elem }}"></div>
+        <div class="card-body">
+            <h5 class="card-title">{{ elem }}</h5>
+            <p class="card-text">Написание тг ботов является довольно распространненой услугой, которая может воплотить ваши задумки в удобного помощника.</p>
+            <div class="for_div">
+                <form action="" class="myForm" onsubmit="event.preventDefault();" method="post">
+                    <input class="btn-success" type="submit"  name="service" onclick="chpok()"
+                           value="{{elem}}">
+                </form>
+            </div>
+        </div>
+        {% endif %}
     </div>
     {% endfor %}
 </div>

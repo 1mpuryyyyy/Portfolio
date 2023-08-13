@@ -44,7 +44,7 @@ def allowed_type(filename, types):
 
 @app.route('/serv', methods=['GET', 'POST'])
 def serv():
-    servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Видеосъемка']
+    servi = ['Написание БД', 'Верстка сайта', 'Монтаж видео', 'Видеосъемка', 'Написание тг бота']
     if current_user.is_authenticated:
         form = Make_Serv()
         if request.method == 'POST':
