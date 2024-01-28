@@ -9,10 +9,8 @@ from back.settings import get_key
 from data.user import User
 import os
 
-secret_key = get_key(r'/home/misha/PycharmProjects/Portfolio/Danger').key.secret_key
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
-app.config['SECRET_KEY'] = secret_key
 app.config['UPLOAD_FOLDER'] = 'uploads'
 login_manager = LoginManager()
 login_manager.init_app(app)
